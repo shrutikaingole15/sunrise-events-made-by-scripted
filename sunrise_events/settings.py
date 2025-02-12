@@ -54,11 +54,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sunrise_events.urls'
 
+import os
+
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',  # Ensure this exists
-       'DIRS': [os.path.join(BASE_DIR, "events/templates")], 
-        'APP_DIRS': True,  # Must be True to look inside app templates
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, "events", "templates")],  # ✅ Correct template path
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

@@ -1,6 +1,12 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
+
+class Image(models.Model):
+    title = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='gallery/')
+
 class Service(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()

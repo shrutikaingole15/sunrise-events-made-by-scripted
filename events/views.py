@@ -34,14 +34,16 @@ from .models import Image, Service  # Ensure you have models for images & servic
 
 def gallery_view(request):
     images = GalleryImage.objects.all()  # ✅ Correct
-
-
     services = Service.objects.all()
+    
     context = {
         'images': images,
         'services': services
     }
-    return render(request, 'home/gallery.html', context)
+
+    return render(request, 'events/gallery.html', context)
+
+
 
 
 class BookingCreateView(CreateView):
