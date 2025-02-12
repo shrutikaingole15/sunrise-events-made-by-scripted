@@ -4,19 +4,133 @@
 {% block title %}Sunrise Events - Creating Magic, One Event at a Time{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="relative h-screen">
-    <div class="absolute inset-0">
-        <img src="{% static 'images/homepage.png' %}" alt="Wedding Venue" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+<!-- Hero Section with Bootstrap Carousel -->
+<section id="heroCarousel" class="carousel slide carousel-fade position-relative" data-bs-ride="carousel">
+    <!-- Hero Content -->
+    <div class="overlay d-flex flex-column justify-content-center align-items-center text-center text-white">
+        <h1 class="display-4 fw-bold mb-3">Creating Magic, One Event at a Time</h1>
+        <p class="lead mb-4">Your happiness is our responsibility</p>
+        <a href="{% url 'events:booking' %}" class="btn btn-warning btn-lg text-dark fw-semibold">Book Now</a>
     </div>
-    <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center text-white">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Creating Magic, One Event at a Time</h1>
-        <p class="text-xl md:text-2xl mb-8">Your happiness is our responsibility</p>
-        <a href="{% url 'events:booking' %}" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-500 transition duration-300">Book Now</a>
-    </div>
-</section>
 
-<!-- Other sections (About, Services, Gallery, Testimonials) remain the same -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Carousel Images -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'images/birthday 1.jpg' %}" class="d-block w-100 carousel-img" alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/birthday 2.jpg' %}" class="d-block w-100 carousel-img" alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'images/anniversary 1.jpg' %}" class="d-block w-100 carousel-img" alt="Slide 3">
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!-- Carousel wrapper -->
+<!-- Testimonial Carousel -->
+{% load static %}
+
+<!-- Testimonial Carousel -->
+<div id="testimonialCarousel" class="carousel slide text-center carousel-dark" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <!-- Testimonial 1 -->
+        <div class="carousel-item active">
+            <img src="{% static 'images/human1.jpg' %}" alt="avatar" />
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <h5 class="mb-3">Maria Kate</h5>
+                    <p>Photographer</p>
+                    <p class="text-muted">
+                        <i class="fas fa-quote-left pe-2"></i>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
+                        nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo.
+                    </p>
+                </div>
+            </div>
+            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="far fa-star fa-sm"></i></li>
+            </ul>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="carousel-item">
+            <img src="{% static 'images/human2.jpg' %}" alt="avatar"/>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <h5 class="mb-3">John Doe</h5>
+                    <p>Web Developer</p>
+                    <p class="text-muted">
+                        <i class="fas fa-quote-left pe-2"></i>
+                        I had a fantastic experience. The team is highly skilled and professional.
+                    </p>
+                </div>
+            </div>
+            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="far fa-star fa-sm"></i></li>
+            </ul>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="carousel-item">
+            <img src="{% static 'images/human3.jpg' %}" alt="avatar"/>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <h5 class="mb-3">Solala Smith</h5>
+                    <p>UX Designer</p>
+                    <p class="text-muted">
+                        <i class="fas fa-quote-left pe-2"></i>
+                        The design and development exceeded my expectations! Highly recommended.
+                    </p>
+                </div>
+            </div>
+            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="fas fa-star fa-sm"></i></li>
+                <li><i class="far fa-star fa-sm"></i></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+</section>
 
 {% endblock %}

@@ -29,11 +29,20 @@ class ServiceDetailView(DetailView):
     model = Service
     template_name = 'events/service_detail.html'
 
-class GalleryView(ListView):
-    model = GalleryImage
-    template_name = 'events/gallery.html'
-    context_object_name = 'images'
-    paginate_by = 12
+from django.shortcuts import render
+from .models import Image, Service  # Ensure you have models for images & services
+
+def gallery_view(request):
+    images = GalleryImage.objects.all()  # ✅ Correct
+
+
+    services = Service.objects.all()
+    context = {
+        'images': images,
+        'services': services
+    }
+    return render(request, 'home/gallery.html', context)
+
 
 class BookingCreateView(CreateView):
     model = Booking

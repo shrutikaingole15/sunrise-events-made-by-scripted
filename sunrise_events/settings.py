@@ -10,6 +10,8 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # Or 'bootstrap5' if using Bootstrap 5
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 
@@ -30,10 +32,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'crispy_forms',
     #'crispy_tailwind',
     #'imagekit',
     'events',
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 
@@ -53,8 +56,8 @@ ROOT_URLCONF = 'sunrise_events.urls'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "events" / "templates"],  # Ensure this exists
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',  # Ensure this exists
+       'DIRS': [os.path.join(BASE_DIR, "events/templates")], 
         'APP_DIRS': True,  # Must be True to look inside app templates
         'OPTIONS': {
             'context_processors': [
@@ -118,8 +121,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Crispy Forms
-CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
-CRISPY_TEMPLATE_PACK = "tailwind"
+#CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+#CRISPY_TEMPLATE_PACK = "tailwind"
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"  # Use 'bootstrap4' if using Bootstrap 4
+
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

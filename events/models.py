@@ -32,7 +32,7 @@ class Booking(models.Model):
         return f"{self.name} - {self.event_date}"
 
 class GalleryImage(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='gallery/')
     category = models.CharField(max_length=100)
     featured = models.BooleanField(default=False)
