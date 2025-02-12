@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sunrise Events - Creating Magic, One Event at a Time{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative h-screen">
+    <div class="absolute inset-0">
+        <img src="{% static 'images/homepage.png' %}" alt="Wedding Venue" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    </div>
+    <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center text-white">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Creating Magic, One Event at a Time</h1>
+        <p class="text-xl md:text-2xl mb-8">Your happiness is our responsibility</p>
+        <a href="{% url 'events:booking' %}" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-500 transition duration-300">Book Now</a>
+    </div>
+</section>
+
+<!-- Other sections (About, Services, Gallery, Testimonials) remain the same -->
+
+{% endblock %}

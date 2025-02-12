@@ -1,0 +1,11 @@
+/* Add any custom CSS styles here */
+.indian-wedding-bg {
+    background-color: #FFD700;
+    background-image: linear-gradient(45deg, #FFD700 25%, #FFA500 25%, #FFA500 50%, #FFD700 50%, #FFD700 75%, #FFA500 75%, #FFA500 100%);
+    background-size: 56.57px 56.57px;
+}
+
+.sabyasachi-inspired {
+    font-family: 'Playfair Display', serif;
+    color: #8B4513;
+}

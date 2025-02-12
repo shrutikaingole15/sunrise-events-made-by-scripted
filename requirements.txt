@@ -1,0 +1,10 @@
+Django==5.0.1
+Pillow==10.2.0
+django-crispy-forms==2.1
+django-admin-interface==0.28.0
+django-colorfield==0.11.0
+django-imagekit==5.0.0
+python-dotenv==1.0.0
+gunicorn==20.1.0
+psycopg2-binary==2.9.3
+whitenoise==6.0.0
