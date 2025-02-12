@@ -22,22 +22,23 @@ ALLOWED_HOSTS = ['*']  # Configure appropriately for production
 
 # Application definition
 INSTALLED_APPS = [
-    'admin_interface',
-    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
-    #"flat_responsive",  # Required dependency
-    #"flat",  # Required dependency
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'crispy_tailwind',
-    #'imagekit',
-    'events',
-    "crispy_forms",
-    "crispy_bootstrap5",
+    
+    'events',  # Your app
+    
+    'crispy_forms',
+    'crispy_bootstrap5',
+
+    # Move these to the end
+    'admin_interface',
+    'colorfield',
 ]
+
 
 
 
@@ -54,13 +55,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sunrise_events.urls'
 
-import os
-
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "events", "templates")],  # ✅ Correct template path
-        'APP_DIRS': True,
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',  # Ensure this exists
+       'DIRS': [os.path.join(BASE_DIR, "events/templates")], 
+        'APP_DIRS': True,  # Must be True to look inside app templates
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
