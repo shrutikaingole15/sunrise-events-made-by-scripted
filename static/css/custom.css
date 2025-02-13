@@ -15,7 +15,7 @@
 
 /* 🎥 Full-Screen Bootstrap Carousel */
 .carousel-item img {
-    height: 90vh;
+    height: 110vh;
     object-fit: cover;
 }
 /* ⏩ Speed up Bootstrap Carousel transitions */
