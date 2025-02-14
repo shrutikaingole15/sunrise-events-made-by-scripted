@@ -1,3 +1,60 @@
+/* 📌 Static Navbar Styling */
+.navbar {
+    position: fixed; /* Fixes navbar at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures navbar stays above all content */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    padding: 10px 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Optional shadow */
+}
+
+/* 🌟 Navbar Link Styling */
+nav a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 🖌️ White underline on hover */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔥 Hover effect */
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* 🌟 Active Page Styling */
+nav a.active {
+    color: white;
+    font-weight: bold;
+}
+
+nav a.active::after {
+    width: 100%;
+    left: 0;
+    background-color: white;
+}
+
+/* 🏗️ Prevent Content Overlap */
+body {
+    padding-top: 70px; /* Adjust based on navbar height */
+}
+
 /* 🎨 Indian Wedding-Inspired Background */
 .indian-wedding-bg {
     background-color: #FFD700;
@@ -11,6 +68,12 @@
     color: #8B4513;
     font-weight: bold;
     letter-spacing: 1px;
+}
+
+.libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
 }
 
 /* 🎥 Full-Screen Bootstrap Carousel */
@@ -73,45 +136,6 @@
     box-shadow: 0px 5px 20px rgba(255, 140, 0, 0.5);
 }
 
-/* 📌 Navbar Styling */
-nav a {
-    position: relative;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 10px 15px;
-    transition: color 0.3s ease-in-out;
-}
-
-/* 🖌️ White underline on hover */
-nav a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -5px;
-    width: 0;
-    height: 3px;
-    background-color: white;
-    transition: all 0.3s ease-in-out;
-}
-
-/* 🔥 Hover effect */
-nav a:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-/* 🌟 Active Page Styling */
-nav a.active {
-    color: white;
-    font-weight: bold;
-}
-
-nav a.active::after {
-    width: 100%;
-    left: 0;
-    background-color: white;
-}
 /* 🔵 About Us Section Styling */
 .about-us-section {
     padding: 80px 0; /* Increased padding for bigger section */
@@ -195,7 +219,6 @@ body {
     display: flex;
     align-items: center;
 }
-
 
 /* 📱 Responsive Typography */
 @media (max-width: 1024px) {

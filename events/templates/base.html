@@ -14,39 +14,41 @@
 </head>
 <body>
 <!-- Header -->
-<header class="bg-transparent absolute w-full top-0 z-50">
-    <nav class="container mx-auto px-6 py-3">
+<header class="bg-gray-900 bg-opacity-70 absolute w-full top-0 z-50">
+
+    <nav class="container mx-auto px-4 py-2"> <!-- Reduced padding -->
         <div class="flex justify-between items-center">
             <div class="flex items-center">
                 <a href="{% url 'events:home' %}" class="flex items-center">
-                    <img src="{% static 'images/logo.png' %}" alt="Sunrise Events" class="h-16">
+                    <img src="{% static 'images/logo.png' %}" alt="Sunrise Events" class="h-12"> <!-- Reduced height -->
                 </a>
             </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="{% url 'events:home' %}" class="text-white hover:text-gray-300">Home</a>
-                <a href="{% url 'events:services' %}" class="text-white hover:text-gray-300">Services</a>
-                <a href="{% url 'events:gallery' %}" class="text-white hover:text-gray-300">Gallery</a>
-                <a href="{% url 'events:booking' %}" class="text-white hover:text-gray-300">Booking</a>
-                <a href="{% url 'events:contact' %}" class="text-white hover:text-gray-300">Contact Us</a>
+            <div class="hidden md:flex items-center space-x-6"> <!-- Reduced spacing -->
+                <a href="{% url 'events:home' %}" class="text-white text-sm hover:text-gray-300">Home</a>
+                <a href="{% url 'events:services' %}" class="text-white text-sm hover:text-gray-300">Services</a>
+                <a href="{% url 'events:gallery' %}" class="text-white text-sm hover:text-gray-300">Gallery</a>
+                <a href="{% url 'events:booking' %}" class="text-white text-sm hover:text-gray-300">Booking</a>
+                <a href="{% url 'events:contact' %}" class="text-white text-sm hover:text-gray-300">Contact Us</a>
             </div>
             <div class="md:hidden">
                 <button class="mobile-menu-button">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="mobile-menu hidden md:hidden mt-4 bg-gray-900 bg-opacity-90 p-4 rounded">
-            <a href="{% url 'events:home' %}" class="block py-2 text-white hover:text-gray-300">Home</a>
-            <a href="{% url 'events:services' %}" class="block py-2 text-white hover:text-gray-300">Services</a>
-            <a href="{% url 'events:gallery' %}" class="block py-2 text-white hover:text-gray-300">Gallery</a>
-            <a href="{% url 'events:booking' %}" class="block py-2 text-white hover:text-gray-300">Booking</a>
-            <a href="{% url 'events:contact' %}" class="block py-2 text-white hover:text-gray-300">Contact Us</a>
+        <div class="mobile-menu hidden md:hidden mt-2 bg-gray-900 bg-opacity-90 p-3 rounded">
+            <a href="{% url 'events:home' %}" class="block py-1 text-white text-sm hover:text-gray-300">Home</a>
+            <a href="{% url 'events:services' %}" class="block py-1 text-white text-sm hover:text-gray-300">Services</a>
+            <a href="{% url 'events:gallery' %}" class="block py-1 text-white text-sm hover:text-gray-300">Gallery</a>
+            <a href="{% url 'events:booking' %}" class="block py-1 text-white text-sm hover:text-gray-300">Booking</a>
+            <a href="{% url 'events:contact' %}" class="block py-1 text-white text-sm hover:text-gray-300">Contact Us</a>
         </div>
     </nav>
 </header>
+
 
 <main>
     {% if messages %}
@@ -60,38 +62,59 @@
     {% endif %}
     {% block content %}{% endblock %}
 </main>
-<footer class="bg-yellow-100 mt-12">
-    <div class="container mx-auto px-6 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
-                <p class="mb-2"><i class="fas fa-phone mr-2"></i> +91 9999970380</p>
-                <p class="mb-2"><i class="fas fa-envelope mr-2"></i> contact.theeventdesigner@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt mr-2"></i> 99/10 Chattarpur Farms, New Delhi, India</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="{% url 'events:services' %}" class="hover:text-gray-600">Our Services</a></li>
-                    <li><a href="{% url 'events:gallery' %}" class="hover:text-gray-600">Gallery</a></li>
-                    <li><a href="{% url 'events:booking' %}" class="hover:text-gray-600">Book Now</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-2xl hover:text-gray-600"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-2xl hover:text-gray-600"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-2xl hover:text-gray-600"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<footer class="text-lg-start text-black" style="background-color: #FFF7CC">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section>
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column - About -->
+          <div class="col-md-4 col-lg-4 col-xl-4 mt-3 text-start">
+            <h6 class="text-uppercase mb-4 font-weight-bold text-black">Sunrise Events</h6>
+            <p class="text-black">
+              At Sunrise Events, we bring your dream events to life with precision, creativity, and passion. 
+              From weddings to corporate galas, we make every moment unforgettable.
+            </p>
+          </div>
+
+          <!-- Grid column - Contact Us -->
+          <div class="col-md-4 col-lg-4 col-xl-4 mt-3 text-start">
+            <h6 class="text-uppercase mb-4 font-weight-bold text-black">Contact Us</h6>
+            <p class="text-black">📞 +91 9999970380</p>
+            <p class="text-black">📧 contact.theeventdesigner@gmail.com</p>
+            <p class="text-black">📍 99/10 Chattarpur Farms, New Delhi, India</p>
+          </div>
+
+          <!-- Grid column - Quick Links -->
+          <div class="col-md-4 col-lg-4 col-xl-4 mt-3 text-start">
+            <h6 class="text-uppercase mb-4 font-weight-bold text-black">Quick Links</h6>
+            <p><a href="#" class="text-black text-decoration-none">Our Services</a></p>
+            <p><a href="#" class="text-black text-decoration-none">Gallery</a></p>
+            <p><a href="#" class="text-black text-decoration-none">Book Now</a></p>
+            <p><a href="#" class="text-black text-decoration-none">Contact Us</a></p>
+          </div>
         </div>
-        <div class="text-center mt-8 pt-8 border-t border-gray-200">
-            <p>© {% now "Y" %} Sunrise Events. All rights reserved.</p>
-            <p class="mt-2 text-sm">scripted with love</p>
-        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-3">
+
+      <!-- Section: Copyright -->
+      <section class="p-3 pt-0 text-start">
+        <p class="text-black">© 2025 Sunrise Events. All rights reserved.</p>
+        <p class="text-black">Scripted with ❤️</p>
+      </section>
+      <!-- Section: Copyright -->
     </div>
+    <!-- Grid container -->
 </footer>
+<!-- Footer -->
+
+
+  
 {% block extra_js %}{% endblock %}
 <script>
     document.querySelector('.mobile-menu-button').addEventListener('click', function() {
@@ -101,4 +124,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 </body>
-</html>
+</html> 
