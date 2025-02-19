@@ -3,139 +3,177 @@
 
 {% block title %}Gallery - Sunrise Events{% endblock %}
 
-{% block extra_css %}
-<style>
-    /* Masonry Grid for Gallery */
-    .masonry-grid {
-        column-count: 1;
-    }
-    @media (min-width: 640px) {
-        .masonry-grid {
-            column-count: 2;
-        }
-    }
-    @media (min-width: 768px) {
-        .masonry-grid {
-            column-count: 3;
-        }
-    }
-    .masonry-item {
-        break-inside: avoid;
-        margin-bottom: 1rem;
-    }
-
-    /* Card Styles */
-    .card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-        gap: 1.5rem;
-        padding-top: 2rem;
-    }
-
-    .card {
-        background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .card:hover {
-        transform: scale(1.05);
-    }
-
-    .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-
-    .card-body {
-        padding: 1rem;
-        text-align: center;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-    }
-
-    .card-text {
-        font-size: 1rem;
-        color: #555;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        background: #facc15;
-        color: #000;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background 0.3s ease-in-out;
-    }
-
-    .btn:hover {
-        background: #fbbf24;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
-<section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-6">
-        <h1 class="text-4xl font-bold text-center mb-12">Our Gallery</h1>
 
-        <!-- Gallery Grid -->
-        <div class="masonry-grid">
-            {% for image in images %}
-            <div class="masonry-item">
-                <div class="relative group overflow-hidden rounded-lg">
-                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="w-full object-cover transform group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-                        <h3 class="text-white text-xl font-semibold text-center px-4">{{ image.title }}</h3>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+<!-- First Section: Gallery Title with Thinner Image Strip -->
+<section class="hero-section position-relative text-center text-white d-flex align-items-center justify-content-center"
+         style="background: url('{% static 'images/img1.jpg' %}') center/cover no-repeat; height: 300px; margin-top: 0px;">
+    
+    <!-- Semi-transparent Overlay -->
+    <div class="overlay" style="position: absolute; inset: 0; background: rgba(255, 255, 255, 0.6);"></div>
 
-        <!-- 6 Cards Section -->
-        <h2 class="text-3xl font-bold text-center mt-12 mb-6">Our Featured Services</h2>
-        <div class="card-container">
-            {% for service in services %}
-            <div class="card">
-                <img src="{{ service.image.url }}" alt="{{ service.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ service.title }}</h5>
-                    <p class="card-text">{{ service.description }}</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        {% if is_paginated %}
-        <div class="mt-8 flex justify-center">
-            <nav class="inline-flex rounded-md shadow">
-                {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">Previous</a>
-                {% endif %}
-                {% for num in page_obj.paginator.page_range %}
-                {% if page_obj.number == num %}
-                <span class="px-3 py-2 border border-gray-300 bg-yellow-400 text-gray-900">{{ num }}</span>
-                {% else %}
-                <a href="?page={{ num }}" class="px-3 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">{{ num }}</a>
-                {% endif %}
-                {% endfor %}
-                {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">Next</a>
-                {% endif %}
-            </nav>
-        </div>
-        {% endif %}
+    <!-- Content Wrapper -->
+    <div class="container position-relative z-2 d-flex flex-column align-items-center">
+        <h1 class="gallery-title">Gallery</h1>
     </div>
 </section>
+
+<!-- Second Section: Gallery Grid with New Background -->
+<section class="py-4" style="background-color: #F5F5DC; background: linear-gradient(to bottom, rgba(245, 245, 220, 0) 0%, rgba(245, 245, 220, 1) 100%); margin-top: 30px !important;">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;700&family=Nunito:wght@300;400;700&display=swap');
+        
+        .gallery-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 120px;
+            color: black;
+            text-align: center;
+            position: absolute;
+            top: 120px; /* Keeps the title positioned correctly */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .hero-section {
+            margin-top: 0px;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Full-screen Overlay */
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .image-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .image-overlay.active {
+            display: flex;
+        }
+
+        .image-overlay.active img {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Close Button */
+        .close-overlay {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            user-select: none;
+        }
+
+        .nav-arrow.left {
+            left: 20px;
+        }
+
+        .nav-arrow.right {
+            right: 20px;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row g-4">
+            {% for image in images %}
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="gallery-item" onclick="showImage({{ forloop.counter0 }})">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Image Overlay -->
+<div class="image-overlay" id="imageOverlay">
+    <span class="close-overlay" onclick="hideImage()">&times;</span>
+    <span class="nav-arrow left" onclick="prevImage()">&#10094;</span>
+    <img id="overlayImg" src="" alt="Enlarged Image">
+    <span class="nav-arrow right" onclick="nextImage()">&#10095;</span>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let currentIndex = 0;
+    let images = [];
+
+    document.addEventListener("DOMContentLoaded", function () {
+        images = Array.from(document.querySelectorAll(".gallery-item img"));
+    });
+
+    function showImage(index) {
+        currentIndex = index;
+        document.getElementById("overlayImg").src = images[index].src;
+        document.getElementById("imageOverlay").classList.add("active");
+    }
+
+    function hideImage() {
+        document.getElementById("imageOverlay").classList.remove("active");
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+</script>
 {% endblock %}

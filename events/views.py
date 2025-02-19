@@ -4,18 +4,20 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Service, GalleryImage, Testimonial, Booking
+from .models import Service, GalleryImage, Testimonial, Booking, Achievement
 from .forms import BookingForm, ContactForm
 
 def home(request):
     services = Service.objects.filter(is_active=True)[:4]
     testimonials = Testimonial.objects.filter(is_active=True)[:3]
     featured_images = GalleryImage.objects.filter(featured=True)[:6]
-    
+    achievements = Achievement.objects.all().order_by("order")
+
     context = {
         'services': services,
         'testimonials': testimonials,
         'featured_images': featured_images,
+        'achievements' : achievements,
     }
     return render(request, 'events/home.html', context)
 
@@ -29,28 +31,23 @@ class ServiceDetailView(DetailView):
     model = Service
     template_name = 'events/service_detail.html'
 
-from django.shortcuts import render
-from .models import Image, Service  # Ensure you have models for images & services
 
 def gallery_view(request):
-    images = GalleryImage.objects.all()  # ✅ Correct
+    images = GalleryImage.objects.all()  
     services = Service.objects.all()
     
     context = {
         'images': images,
-        'services': services
+        'services': services,
     }
 
     return render(request, 'events/gallery.html', context)
-
-
-
 
 class BookingCreateView(CreateView):
     model = Booking
     form_class = BookingForm
     template_name = 'events/booking.html'
-    success_url = '/booking/success/'
+    success_url = '/booking'
 
     def form_valid(self, form):
         booking = form.save()

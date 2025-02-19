@@ -1,157 +1,377 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}Sunrise Events - Creating Magic, One Event at a Time{% endblock %}
-
 {% block content %}
-<!-- Hero Section with Bootstrap Carousel -->
-<section id="heroCarousel" class="carousel slide carousel-fade position-relative" data-bs-ride="carousel">
-    <!-- Hero Content (Properly Positioned) -->
-    <div class="overlay d-flex flex-column justify-content-center align-items-center text-center text-white"
-         style="position: absolute; top: 33%; bottom: 0% left: 50%; transform: translate(-50%, -50%); z-index: 10; width: 100%;">
-        <h1 class="display-4 fw-bold mb-3">Creating Magic, One Event at a Time</h1>
-        <p class="lead mb-4">Your happiness is our responsibility</p>
-        <a href="{% url 'events:booking' %}" class="btn btn-warning btn-lg text-dark fw-semibold">Book Now</a>
-    </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Events - Creating Magic, One Event at a Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;700&family=Nunito:wght@300;400;700&display=swap">
 
-    <!-- Carousel -->
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{% static 'images/birthday 1.jpg' %}" class="d-block w-100 carousel-img" alt="Slide 1">
-        </div>
-        <div class="carousel-item">
-            <img src="{% static 'images/birthday 2.jpg' %}" class="d-block w-100 carousel-img" alt="Slide 2">
-        </div>
-        <div class="carousel-item">
-            <img src="{% static 'images/anniversary 1.jpg' %}" class="d-block w-100 carousel-img" alt="Slide 3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+           body {
+            font-family: "Lexend", serif;
+            font-weight: 300;
+        }
+
+        .hero-section {
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+
+      
+
+        .book-now-btn {
+            font-family: "Lexend", serif;
+            font-weight: 300;
+            background-color: #7B8E69;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now-btn:hover {
+            background-color: #5a6b4d;
+        }
+
+        .contact-us-container {
+        display: flex;
+        justify-content: center;
+        }
+
+        .contact-us-btn {
+            font-family: "Lexend", serif;
+            font-weight: 300;
+            background-color: #7B8E69;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-us-btn:hover {
+            background-color: #5a6b4d;
+        }
+     
+        /* 🔵 About Us Section Styling */
+    .about-us-section {
+    padding: 80px 0; /* Increased padding for bigger section */
+    background-color: #fff8e1;
+    border-radius: 10px;
+    }
+
+    .about-us-title {
+            
+            color: black;
+            text-align: center;
+            position: absolute;
+            top: 120px; /* Adjusted for proper positioning */
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            opacity: 0;
+            z-index: 1;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+
+    .about-us-section p {
+    font-size: 0.8rem;
+}
+    .about-us-section {
+            background-color: #FFE4E1;
+            padding: 4rem 0;
+       
+    }
+
+       
+
+        .about-text {
+            font-family: "Lexend", serif;
+            font-weight: 300;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 0.8rem;
+            height: 60vh;
+        }
+
+        .achievements-section {
+            background: white;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .counter, .plus {
+            display: inline-block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .plus {
+            margin-left: 5px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .process-section {
+            background-color: #f8f6f2;
+            padding: 4rem 0;
+        }
+
+        .process-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 350px;
+            text-align: center;
+        }            
+            .testimonials-section {
+            background-color: #c5ffae;
+            padding: 4rem 0;
+        }
+
+        .testimonial-box {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 2rem;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-quote {
+            color: #ff6699;
+            font-size: 2.5rem;
+        }
+        
+
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+
+        /*.hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 120px;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 300px;
+            left: 50%;
+            opacity: 0;
+
+            
+        }
+
+        */
+    </style>
+    </style>
+</head>
+<body>
+    <main>
+        <section id="heroCarousel" class="carousel slide hero-section" data-bs-ride="carousel">
+            <div class="hero-overlay">
+                <h1 class="hero-title">Creating Magic, One Event at a Time</h1>
+                <p class="lead mb-4">Your happiness is our responsibility</p>
+                <a href="#" class="btn btn-lg fw-semibold book-now-btn">Book Now</a>
+            </div>
+
+            <div class="carousel-inner">
+                {% for image in featured_images %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ image.image.url }}" class="d-block w-100 carousel-img" alt="Featured Image {{ forloop.counter }}">
+                </div>
+                {% endfor %}
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </section>
+
+    <section class="about-us-section" style="background-color: #fbfbef; padding: 50px 0;">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Video -->
+            <div class="col-md-6">
+                <div class="about-image" style="max-width: 900px; margin: 0 auto;">
+                    <iframe 
+                    width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/RXkmIjwfxAM" 
+                    frameborder="0" 
+                    allowfullscreen>
+                </iframe>
+                </div>
+            </div>
+            
+            <!-- Right Text Content -->
+            <div class="col-md-6">
+                <div class="about-text" style="max-width: 900px; max-height: fit-content; margin: 0 auto; font-size: 0.8rem;">
+                    <h2 class="text-center mb-5" style="font-size: 2.8rem;">ABOUT US</h2>
+                    <p>
+                        Founded in 2017 by Mr. Vaseem Akram, Sunrise Events has been dedicated to transforming dreams into unforgettable experiences. With a passion for creativity and precision, we specialize in crafting events that leave lasting impressions.
+                    </p>
+                    <p>
+                        We have built a reputation for delivering seamless and innovative event solutions. Our mission is to scale Sunrise Events to a Pan India Production Level, expanding our reach while maintaining the same level of excellence and personalization that sets us apart.
+                    </p>
+                    <p>
+                        At Sunrise Events, we don't just plan events—we create memories that last a lifetime. Whether it's an intimate celebration or a large-scale production, we are committed to making every event truly spectacular.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Carousel Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
 </section>
 
-<!-- Spacer to separate the carousels -->
-<div style="height: 50px;"></div>
-
-<!-- Testimonial Carousel -->
-<div id="testimonialCarousel" class="carousel slide text-center carousel-dark" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <!-- Testimonial 1 -->
-        <div class="carousel-item active">
-            <img src="{% static 'images/human1.jpg' %}" alt="avatar" />
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <h5 class="mb-3">Maria Kate</h5>
-                    <p>Photographer</p>
-                    <p class="text-muted">
-                        <i class="fas fa-quote-left pe-2"></i>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus et deleniti
-                        nesciunt sint eligendi reprehenderit reiciendis, quibusdam illo.
-                    </p>
+        <section id="achievements" class="achievements-section" style="background: url('{% static 'images/img1.jpg' %}') center/cover no-repeat; height: 400px; margin-top: 0px; position: relative;">
+            <div class="overlay" style="background: rgba(255, 255, 255, 0.6); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+            <div class="container" style="position: relative; z-index: 1; text-align: center;">
+                <h2 class="text-center mb-5" style="font-size: 2.8rem;">OUR WORK</h2>
+                <div class="row text-center">
+                    {% for achievement in achievements %}
+                    <div class="col-md-3 stat-box">
+                        <p class="display-5 fw-bold">
+                            <span class="counter" data-target="{{ achievement.count }}" 
+                                  style="color: #000; font-family: 'Lexend', serif;">0</span>
+                            <span class="plus" style="font-size: 2.5rem; font-weight: bold; margin-left: 5px; opacity: 0; transition: opacity 0.5s ease-in-out; display: inline-block; color: #000; font-family: 'Lexend', serif;">+</span>
+                        </p>
+                        <p class="text-uppercase fw-semibold" style="color: #000; font-family: 'Lexend', serif;">{{ achievement.name }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="far fa-star fa-sm"></i></li>
-            </ul>
-        </div>
+        </section>
 
-        <!-- Testimonial 2 -->
-        <div class="carousel-item">
-            <img src="{% static 'images/human2.jpg' %}" alt="avatar"/>
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <h5 class="mb-3">John Doe</h5>
-                    <p>Web Developer</p>
-                    <p class="text-muted">
-                        <i class="fas fa-quote-left pe-2"></i>
-                        I had a fantastic experience. The team is highly skilled and professional.
-                    </p>
+        <section class="process-section" style="background-color: #fbf7ef; padding: 50px 0;" >
+            <div class="container">
+                <h2 class="text-center mb-5" style="font-size: 2.8rem;">OUR PROCESS</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="process-card">
+                            <h3>Step 1: Introduction</h3>
+                            <p>During our first consultation, we will learn about your organization, event goals, values, and trajectory. This step ensures that we understand your vision and tailor our approach accordingly.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="process-card">
+                            <h3>Step 2: Customization</h3>
+                            <p>Following our conversation, we will work on personalizing the perfect package for your event needs. Our team will design an event blueprint, incorporating your preferences and unique elements.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="process-card">
+                            <h3>Step 3: Activation</h3>
+                            <p>Once the contract is signed, we launch into action! Our team will meticulously execute every detail, ensuring a seamless and memorable event experience from start to finish.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="far fa-star fa-sm"></i></li>
-            </ul>
-        </div>
+        </section>
 
-        <!-- Testimonial 3 -->
-        <div class="carousel-item">
-            <img src="{% static 'images/human3.jpg' %}" alt="avatar"/>
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    <h5 class="mb-3">Solala Smith</h5>
-                    <p>UX Designer</p>
-                    <p class="text-muted">
-                        <i class="fas fa-quote-left pe-2"></i>
-                        The design and development exceeded my expectations! Highly recommended.
-                    </p>
+    
+        
+        
+        <section id="testimonials" class="testimonials-section" style="background: url('{% static 'images/img1.jpg' %}') center/cover no-repeat; height: 550px; margin-top: 0px; position: relative;">
+            <!-- Overlay -->
+        <div class="overlay" style="background: rgba(255, 255, 255, 0.6); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        
+            <div class="container" style="position: relative; z-index: 1; text-align: center;">
+                <h2 class="text-center mb-5" style="font-size: 2.8rem;" >WHAT OUR CLIENTS SAY</h2>
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for testimonial in testimonials %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <div class="testimonial-box p-4 mx-auto" 
+                                    style="max-width: 600px; background: white; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
+                                    <h4 style="color: #000000;">&ldquo;</h4>
+                                    <p class="lead">"{{ testimonial.content }}"</p>
+                                    <h5 class="fw-semibold mt-3">- {{ testimonial.name }}</h5>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
-            <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="fas fa-star fa-sm"></i></li>
-                <li><i class="far fa-star fa-sm"></i></li>
-            </ul>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <!-- Carousel Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const achievementsSection = document.getElementById("achievements");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        achievementsSection.style.opacity = "1";
+                        achievementsSection.style.transform = "translateY(0)";
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.2 });
 
-<!-- Spacer to separate the carousels -->
-<div style="height: 50px;"></div>
+            observer.observe(achievementsSection);
 
-<!-- Extra Carousel (Optional) -->
-<div id="carouselExampleIndicators" class="carousel slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-</div>
+            function animateCounters() {
+                const counters = document.querySelectorAll(".counter");
+                const speed = 200;
 
+                counters.forEach((counter) => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute("data-target");
+                        const count = +counter.innerText;
+                        const increment = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + increment);
+                            setTimeout(updateCount, 1);
+                        } else {
+                            counter.innerText = target;
+                            counter.nextElementSibling.style.opacity = "1";
+                        }
+                    };
+
+                    updateCount();
+                });
+            }
+        });
+    </script>
+</body>
 {% endblock %}
+

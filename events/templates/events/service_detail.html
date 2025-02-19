@@ -11,10 +11,30 @@
             <div class="p-8">
                 <h1 class="text-4xl font-bold mb-4">{{ service.title }}</h1>
                 <p class="text-gray-600 mb-6">{{ service.description }}</p>
-                <p class="text-2xl text-yellow-600 font-semibold mb-6">Starting from ${{ service.price_starts_from }}</p>
-                <a href="{% url 'events:booking' %}?service={{ service.pk }}" class="inline-block bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-yellow-500 transition duration-300">Book This Service</a>
+                <p class="text-2xl text-yellow-600 font-semibold mb-6">Starting from ₹{{ service.price_starts_from }}</p>
+                <a href="{% url 'events:booking' %}?service={{ service.pk }}" class="book-now-btn">Book This Service</a>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .book-now-btn {
+        background-color: #7B8E69;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 18px;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .book-now-btn:hover {
+        background-color: #5a6b4d;
+        color: #fff;
+    }
+</style>
 {% endblock %}

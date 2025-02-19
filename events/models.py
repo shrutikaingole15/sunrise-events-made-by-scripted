@@ -1,11 +1,17 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-
-
 class Image(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='gallery/')
+
+class Achievement(models.Model):
+    name = models.CharField(max_length=100)  # e.g., "Weddings"
+    count = models.PositiveIntegerField(default=0)  # Number to be displayed
+    order = models.PositiveIntegerField(default=0)  # Order in the UI
+
+    def __str__(self):
+        return f"{self.name}: {self.count}"
 
 class Service(models.Model):
     title = models.CharField(max_length=200)

@@ -1,6 +1,15 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Service, Booking, GalleryImage, Testimonial
+from .models import Service, Booking, GalleryImage, Testimonial, Achievement
+from django.contrib.auth.models import Group, User
+
+admin.site.unregister(Group) 
+
+@admin.register(Achievement)
+class AchievementAdmin(admin.ModelAdmin):
+    list_display = ("name", "count", "order")
+    list_editable = ("count", "order")
+
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
